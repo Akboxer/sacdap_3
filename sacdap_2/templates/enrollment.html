@@ -1,0 +1,197 @@
+{% extends "base.html" %}
+
+{% block title %}Enroll Now - SACDAP{% endblock %}
+
+{% block content %}
+<!-- Page Header -->
+<section class="bg-danger text-white py-5">
+    <div class="container">
+        <div class="row align-items-center">
+            <div class="col-lg-8">
+                <h1 class="display-5 fw-bold mb-3">
+                    <i class="fas fa-user-plus me-3"></i>Course Enrollment
+                </h1>
+                <p class="lead">Take the first step towards transforming your career. Fill out the form below to enroll in our professional training programs.</p>
+            </div>
+            <div class="col-lg-4 text-center">
+                <i class="fas fa-graduation-cap fa-4x opacity-75"></i>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Enrollment Form -->
+<section class="py-5">
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-lg-8">
+                <div class="card shadow-lg border-0">
+                    <div class="card-header bg-light py-4 text-center">
+                        <h3 class="mb-0 text-danger">
+                            <i class="fas fa-form me-2"></i>Enrollment Application Form
+                        </h3>
+                        <p class="text-muted mb-0 mt-2">Please provide your details to begin your learning journey</p>
+                    </div>
+                    <div class="card-body p-5">
+                        <form method="POST" novalidate>
+                            {{ form.hidden_tag() }}
+                            
+                            <div class="row g-4">
+                                <!-- Name Field -->
+                                <div class="col-md-6">
+                                    <label for="{{ form.name.id }}" class="form-label fw-bold">
+                                        <i class="fas fa-user me-2 text-danger"></i>{{ form.name.label.text }}
+                                    </label>
+                                    {{ form.name(class="form-control form-control-lg" + (" is-invalid" if form.name.errors else ""), placeholder="Enter your full name") }}
+                                    {% if form.name.errors %}
+                                        <div class="invalid-feedback">
+                                            {% for error in form.name.errors %}{{ error }}{% endfor %}
+                                        </div>
+                                    {% endif %}
+                                </div>
+                                
+                                <!-- Email Field -->
+                                <div class="col-md-6">
+                                    <label for="{{ form.email.id }}" class="form-label fw-bold">
+                                        <i class="fas fa-envelope me-2 text-danger"></i>{{ form.email.label.text }}
+                                    </label>
+                                    {{ form.email(class="form-control form-control-lg" + (" is-invalid" if form.email.errors else ""), placeholder="Enter your email address") }}
+                                    {% if form.email.errors %}
+                                        <div class="invalid-feedback">
+                                            {% for error in form.email.errors %}{{ error }}{% endfor %}
+                                        </div>
+                                    {% endif %}
+                                </div>
+                                
+                                <!-- Phone Field -->
+                                <div class="col-md-6">
+                                    <label for="{{ form.phone.id }}" class="form-label fw-bold">
+                                        <i class="fas fa-phone me-2 text-danger"></i>{{ form.phone.label.text }}
+                                    </label>
+                                    {{ form.phone(class="form-control form-control-lg" + (" is-invalid" if form.phone.errors else ""), placeholder="Enter your phone number") }}
+                                    {% if form.phone.errors %}
+                                        <div class="invalid-feedback">
+                                            {% for error in form.phone.errors %}{{ error }}{% endfor %}
+                                        </div>
+                                    {% endif %}
+                                </div>
+                                
+                                <!-- Course Selection -->
+                                <div class="col-md-6">
+                                    <label for="{{ form.course_interested.id }}" class="form-label fw-bold">
+                                        <i class="fas fa-book me-2 text-danger"></i>{{ form.course_interested.label.text }}
+                                    </label>
+                                    {{ form.course_interested(class="form-select form-select-lg" + (" is-invalid" if form.course_interested.errors else "")) }}
+                                    {% if form.course_interested.errors %}
+                                        <div class="invalid-feedback">
+                                            {% for error in form.course_interested.errors %}{{ error }}{% endfor %}
+                                        </div>
+                                    {% endif %}
+                                </div>
+                                
+                                <!-- Message Field -->
+                                <div class="col-12">
+                                    <label for="{{ form.message.id }}" class="form-label fw-bold">
+                                        <i class="fas fa-comment me-2 text-danger"></i>{{ form.message.label.text }}
+                                        <span class="text-muted fw-normal">(Optional)</span>
+                                    </label>
+                                    {{ form.message(class="form-control" + (" is-invalid" if form.message.errors else ""), rows="4", placeholder="Any specific questions or requirements?") }}
+                                    {% if form.message.errors %}
+                                        <div class="invalid-feedback">
+                                            {% for error in form.message.errors %}{{ error }}{% endfor %}
+                                        </div>
+                                    {% endif %}
+                                </div>
+                                
+                                <!-- Terms and Submit -->
+                                <div class="col-12">
+                                    <div class="bg-light p-3 rounded mb-3">
+                                        <div class="form-check">
+                                            <input class="form-check-input" type="checkbox" id="terms" required>
+                                            <label class="form-check-label" for="terms">
+                                                I agree to the terms and conditions and consent to SACDAP contacting me regarding course information and enrollment details.
+                                            </label>
+                                        </div>
+                                    </div>
+                                    
+                                    <button type="submit" class="btn btn-danger btn-lg w-100 py-3">
+                                        <i class="fas fa-paper-plane me-2"></i>Submit Enrollment Application
+                                    </button>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Benefits Section -->
+<section class="py-5 bg-light">
+    <div class="container">
+        <div class="text-center mb-5">
+            <h2 class="display-6 fw-bold text-dark">What Happens Next?</h2>
+            <p class="lead text-muted">Your enrollment journey with SACDAP</p>
+        </div>
+        
+        <div class="row g-4">
+            <div class="col-md-3 text-center">
+                <div class="bg-white rounded p-4 shadow-sm h-100">
+                    <div class="bg-danger text-white rounded-circle p-3 d-inline-block mb-3">
+                        <i class="fas fa-user-check fa-2x"></i>
+                    </div>
+                    <h5>Application Review</h5>
+                    <p class="text-muted">Our team will review your application within 24 hours</p>
+                </div>
+            </div>
+            <div class="col-md-3 text-center">
+                <div class="bg-white rounded p-4 shadow-sm h-100">
+                    <div class="bg-danger text-white rounded-circle p-3 d-inline-block mb-3">
+                        <i class="fas fa-phone fa-2x"></i>
+                    </div>
+                    <h5>Personal Consultation</h5>
+                    <p class="text-muted">We'll call you to discuss course details and answer questions</p>
+                </div>
+            </div>
+            <div class="col-md-3 text-center">
+                <div class="bg-white rounded p-4 shadow-sm h-100">
+                    <div class="bg-danger text-white rounded-circle p-3 d-inline-block mb-3">
+                        <i class="fas fa-calendar-check fa-2x"></i>
+                    </div>
+                    <h5>Batch Assignment</h5>
+                    <p class="text-muted">Get assigned to the most suitable batch timing</p>
+                </div>
+            </div>
+            <div class="col-md-3 text-center">
+                <div class="bg-white rounded p-4 shadow-sm h-100">
+                    <div class="bg-danger text-white rounded-circle p-3 d-inline-block mb-3">
+                        <i class="fas fa-play-circle fa-2x"></i>
+                    </div>
+                    <h5>Start Learning</h5>
+                    <p class="text-muted">Begin your transformation journey with expert guidance</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Contact Info -->
+<section class="py-5 bg-secondary text-white">
+    <div class="container text-center">
+        <h3 class="fw-bold mb-3">Need Help with Enrollment?</h3>
+        <p class="lead mb-4">Our counselors are here to guide you through the process</p>
+        <div class="d-flex justify-content-center gap-3 flex-wrap">
+            <a href="tel:+911234567890" class="btn btn-outline-light">
+                <i class="fas fa-phone me-2"></i>Call: +91 123 456 7890
+            </a>
+            <a href="mailto:info@sacdap.com" class="btn btn-outline-light">
+                <i class="fas fa-envelope me-2"></i>Email: info@sacdap.com
+            </a>
+            <a href="{{ url_for('contact') }}" class="btn btn-light text-dark">
+                <i class="fas fa-comments me-2"></i>Contact Form
+            </a>
+        </div>
+    </div>
+</section>
+{% endblock %}

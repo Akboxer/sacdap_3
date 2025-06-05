@@ -1,0 +1,229 @@
+{% extends "base.html" %}
+
+{% block title %}{{ courses.title }} - SACDAP{% endblock %}
+
+{% block content %}
+<!-- Page Header -->
+<section class="bg-danger text-white py-5">
+    <div class="container">
+        <div class="row align-items-center">
+            <div class="col-lg-8">
+                <h1 class="display-5 fw-bold mb-3">
+                    <i class="fas fa-laptop-code me-3"></i>{{ courses.title }}
+                </h1>
+                <p class="lead">{{ courses.description }}</p>
+            </div>
+            <div class="col-lg-4 text-center">
+                <i class="fas fa-code fa-4x opacity-75"></i>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- IT Lab Showcase -->
+<section class="py-5 bg-light">
+    <div class="container">
+        <div class="text-center mb-5">
+            <h2 class="display-6 fw-bold text-dark">Our IT Training Infrastructure</h2>
+            <p class="lead text-muted">State-of-the-art computer labs equipped with latest technology</p>
+        </div>
+        
+        <div class="row g-4 mb-5">
+            <div class="col-md-6">
+                <div class="card shadow-sm border-0">
+                    <img src="{{ url_for('static', filename='images/classroom1.jpg') }}" class="card-img-top" style="height: 300px; object-fit: cover;" alt="SACDAP IT Training Lab">
+                    <div class="card-body">
+                        <h5 class="card-title text-danger">Modern Computer Lab</h5>
+                        <p class="card-text">Individual workstations with high-performance computers for hands-on programming and development training.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="card shadow-sm border-0">
+                    <img src="{{ url_for('static', filename='images/classroom2.jpg') }}" class="card-img-top" style="height: 300px; object-fit: cover;" alt="SACDAP Smart Classroom">
+                    <div class="card-body">
+                        <h5 class="card-title text-danger">Interactive Learning Environment</h5>
+                        <p class="card-text">Air-conditioned smart classrooms with projectors and modern teaching aids for effective learning.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Courses List -->
+<section class="py-5">
+    <div class="container">
+        <div class="text-center mb-5">
+            <h2 class="display-6 fw-bold text-dark">Our IT Courses</h2>
+            <p class="lead text-muted">Choose from our comprehensive technology training programs</p>
+        </div>
+        <div class="row g-4">
+            {% for course in courses.courses %}
+            <div class="col-lg-6">
+                <div class="card h-100 shadow-sm course-detail-card">
+                    <div class="card-header bg-light">
+                        <div class="d-flex justify-content-between align-items-center">
+                            <h5 class="mb-0 text-danger">{{ course.name }}</h5>
+                            <span class="badge bg-secondary">{{ course.duration }}</span>
+                        </div>
+                    </div>
+                    <div class="card-body">
+                        <p class="card-text">{{ course.description }}</p>
+                        
+                        <!-- Course Features -->
+                        <div class="mt-3">
+                            <h6 class="fw-bold text-dark">What You'll Learn:</h6>
+                            <ul class="list-unstyled">
+                                {% if course.id == 'python_programming' %}
+                                <li><i class="fas fa-check text-success me-2"></i>Python fundamentals & syntax</li>
+                                <li><i class="fas fa-check text-success me-2"></i>Object-oriented programming</li>
+                                <li><i class="fas fa-check text-success me-2"></i>Web frameworks (Flask/Django)</li>
+                                <li><i class="fas fa-check text-success me-2"></i>Database integration</li>
+                                {% elif course.id == 'web_development' %}
+                                <li><i class="fas fa-check text-success me-2"></i>HTML5, CSS3 & JavaScript</li>
+                                <li><i class="fas fa-check text-success me-2"></i>Responsive web design</li>
+                                <li><i class="fas fa-check text-success me-2"></i>Frontend frameworks</li>
+                                <li><i class="fas fa-check text-success me-2"></i>Backend development</li>
+                                {% elif course.id == 'data_science' %}
+                                <li><i class="fas fa-check text-success me-2"></i>Data analysis with Python</li>
+                                <li><i class="fas fa-check text-success me-2"></i>Machine learning algorithms</li>
+                                <li><i class="fas fa-check text-success me-2"></i>Data visualization</li>
+                                <li><i class="fas fa-check text-success me-2"></i>Statistical modeling</li>
+                                {% elif course.id == 'digital_marketing' %}
+                                <li><i class="fas fa-check text-success me-2"></i>SEO & SEM strategies</li>
+                                <li><i class="fas fa-check text-success me-2"></i>Social media marketing</li>
+                                <li><i class="fas fa-check text-success me-2"></i>Content marketing</li>
+                                <li><i class="fas fa-check text-success me-2"></i>Analytics & reporting</li>
+                                {% elif course.id == 'devops' %}
+                                <li><i class="fas fa-check text-success me-2"></i>CI/CD pipeline setup</li>
+                                <li><i class="fas fa-check text-success me-2"></i>Docker & Kubernetes</li>
+                                <li><i class="fas fa-check text-success me-2"></i>Infrastructure automation</li>
+                                <li><i class="fas fa-check text-success me-2"></i>Monitoring & logging</li>
+                                {% elif course.id == 'aws_cloud' %}
+                                <li><i class="fas fa-check text-success me-2"></i>AWS core services</li>
+                                <li><i class="fas fa-check text-success me-2"></i>EC2 & cloud architecture</li>
+                                <li><i class="fas fa-check text-success me-2"></i>Security & compliance</li>
+                                <li><i class="fas fa-check text-success me-2"></i>Cost optimization</li>
+                                {% endif %}
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="card-footer bg-light">
+                        <div class="d-flex gap-2 mb-2">
+                            <button class="btn btn-outline-secondary btn-sm flex-fill" disabled>
+                                <i class="fas fa-file-pdf me-1"></i>Course PDF
+                                <small class="d-block text-muted">Coming Soon</small>
+                            </button>
+                        </div>
+                        <a href="{{ url_for('enroll', course=course.id) }}" class="btn btn-danger w-100">
+                            <i class="fas fa-user-plus me-2"></i>Enroll in {{ course.name }}
+                        </a>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</section>
+
+<!-- Tech Skills Section -->
+<section class="bg-light py-5">
+    <div class="container">
+        <div class="text-center mb-5">
+            <h2 class="display-6 fw-bold text-dark">Technologies We Teach</h2>
+            <p class="lead text-muted">Master the latest technologies with industry-standard tools</p>
+        </div>
+        
+        <div class="row g-4">
+            <div class="col-md-2 col-sm-4 text-center">
+                <div class="bg-white rounded p-3 shadow-sm">
+                    <i class="fab fa-python fa-2x text-warning mb-2"></i>
+                    <h6>Python</h6>
+                </div>
+            </div>
+            <div class="col-md-2 col-sm-4 text-center">
+                <div class="bg-white rounded p-3 shadow-sm">
+                    <i class="fab fa-js-square fa-2x text-warning mb-2"></i>
+                    <h6>JavaScript</h6>
+                </div>
+            </div>
+            <div class="col-md-2 col-sm-4 text-center">
+                <div class="bg-white rounded p-3 shadow-sm">
+                    <i class="fab fa-react fa-2x text-info mb-2"></i>
+                    <h6>React</h6>
+                </div>
+            </div>
+            <div class="col-md-2 col-sm-4 text-center">
+                <div class="bg-white rounded p-3 shadow-sm">
+                    <i class="fab fa-node-js fa-2x text-success mb-2"></i>
+                    <h6>Node.js</h6>
+                </div>
+            </div>
+            <div class="col-md-2 col-sm-4 text-center">
+                <div class="bg-white rounded p-3 shadow-sm">
+                    <i class="fas fa-database fa-2x text-primary mb-2"></i>
+                    <h6>Databases</h6>
+                </div>
+            </div>
+            <div class="col-md-2 col-sm-4 text-center">
+                <div class="bg-white rounded p-3 shadow-sm">
+                    <i class="fab fa-aws fa-2x text-warning mb-2"></i>
+                    <h6>Cloud</h6>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Career Paths Section -->
+<section class="py-5">
+    <div class="container">
+        <div class="text-center mb-5">
+            <h2 class="display-6 fw-bold text-dark">IT Career Opportunities</h2>
+            <p class="lead text-muted">Explore high-demand IT career paths</p>
+        </div>
+        
+        <div class="row g-4">
+            <div class="col-md-4">
+                <div class="text-center">
+                    <div class="bg-danger text-white rounded-circle p-4 d-inline-block shadow-sm mb-3">
+                        <i class="fas fa-laptop-code fa-2x"></i>
+                    </div>
+                    <h5>Software Developer</h5>
+                    <p class="text-muted">Build applications and software solutions for various industries</p>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="text-center">
+                    <div class="bg-danger text-white rounded-circle p-4 d-inline-block shadow-sm mb-3">
+                        <i class="fas fa-chart-line fa-2x"></i>
+                    </div>
+                    <h5>Data Scientist</h5>
+                    <p class="text-muted">Analyze complex data to derive insights and drive business decisions</p>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="text-center">
+                    <div class="bg-danger text-white rounded-circle p-4 d-inline-block shadow-sm mb-3">
+                        <i class="fas fa-bullhorn fa-2x"></i>
+                    </div>
+                    <h5>Digital Marketer</h5>
+                    <p class="text-muted">Drive online growth through strategic digital marketing campaigns</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- CTA Section -->
+<section class="py-5 bg-secondary text-white">
+    <div class="container text-center">
+        <h2 class="display-6 fw-bold mb-3">Launch Your IT Career Today</h2>
+        <p class="lead mb-4">Join the digital revolution with cutting-edge skills and industry expertise</p>
+        <a href="{{ url_for('enroll') }}" class="btn btn-danger btn-lg">
+            <i class="fas fa-rocket me-2"></i>Start Learning
+        </a>
+    </div>
+</section>
+{% endblock %}

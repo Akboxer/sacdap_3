@@ -1,0 +1,179 @@
+{% extends "base.html" %}
+
+{% block title %}Enrollment Successful - SACDAP{% endblock %}
+
+{% block content %}
+<!-- Success Header -->
+<section class="bg-success text-white py-5">
+    <div class="container">
+        <div class="row align-items-center">
+            <div class="col-lg-8">
+                <div class="text-center">
+                    <i class="fas fa-check-circle fa-5x mb-4"></i>
+                    <h1 class="display-4 fw-bold mb-3">Enrollment Successful!</h1>
+                    <p class="lead">Thank you for choosing SACDAP for your career development journey.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Success Details -->
+<section class="py-5">
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-lg-8">
+                <div class="card shadow-lg border-0">
+                    <div class="card-header bg-light text-center py-4">
+                        <h3 class="mb-0 text-success">
+                            <i class="fas fa-graduation-cap me-2"></i>Welcome to SACDAP Family!
+                        </h3>
+                    </div>
+                    <div class="card-body p-5">
+                        <div class="text-center mb-4">
+                            <h4 class="text-danger">Hi {{ student_name }}!</h4>
+                            <p class="lead">Your enrollment application for <strong class="text-danger">{{ course_name }}</strong> has been successfully submitted.</p>
+                        </div>
+                        
+                        <!-- Application Status -->
+                        <div class="bg-light rounded p-4 mb-4">
+                            <h5 class="fw-bold text-dark mb-3">
+                                <i class="fas fa-info-circle me-2 text-danger"></i>What Happens Next?
+                            </h5>
+                            <div class="row g-3">
+                                <div class="col-md-6">
+                                    <div class="d-flex align-items-start">
+                                        <div class="bg-success text-white rounded-circle p-2 me-3 mt-1">
+                                            <i class="fas fa-clock"></i>
+                                        </div>
+                                        <div>
+                                            <h6 class="mb-1">Within 24 Hours</h6>
+                                            <small class="text-muted">Application review and verification</small>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="d-flex align-items-start">
+                                        <div class="bg-success text-white rounded-circle p-2 me-3 mt-1">
+                                            <i class="fas fa-phone"></i>
+                                        </div>
+                                        <div>
+                                            <h6 class="mb-1">Personal Call</h6>
+                                            <small class="text-muted">Counselor will contact you for details</small>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="d-flex align-items-start">
+                                        <div class="bg-success text-white rounded-circle p-2 me-3 mt-1">
+                                            <i class="fas fa-calendar"></i>
+                                        </div>
+                                        <div>
+                                            <h6 class="mb-1">Batch Assignment</h6>
+                                            <small class="text-muted">Suitable timing based on your preference</small>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="d-flex align-items-start">
+                                        <div class="bg-success text-white rounded-circle p-2 me-3 mt-1">
+                                            <i class="fas fa-play"></i>
+                                        </div>
+                                        <div>
+                                            <h6 class="mb-1">Course Begins</h6>
+                                            <small class="text-muted">Start your transformation journey</small>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Important Information -->
+                        <div class="alert alert-info" role="alert">
+                            <h6 class="alert-heading">
+                                <i class="fas fa-lightbulb me-2"></i>Important Information
+                            </h6>
+                            <ul class="mb-0">
+                                <li>Keep your phone accessible - our counselor will call you soon</li>
+                                <li>Check your email for any additional information</li>
+                                <li>Have questions ready about course structure and timings</li>
+                                <li>Consider your preferred batch timing (morning/afternoon/evening)</li>
+                            </ul>
+                        </div>
+                        
+                        <!-- Reference Number -->
+                        <div class="text-center mb-4">
+                            <div class="bg-danger text-white rounded p-3 d-inline-block">
+                                <h6 class="mb-0">Application Reference</h6>
+                                <strong>SACDAP-2024-{{ range(1000, 9999) | random }}</strong>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Course Information -->
+<section class="py-5 bg-light">
+    <div class="container">
+        <div class="text-center mb-5">
+            <h2 class="display-6 fw-bold text-dark">While You Wait...</h2>
+            <p class="lead text-muted">Explore more about your chosen course and SACDAP</p>
+        </div>
+        
+        <div class="row g-4 justify-content-center">
+            <div class="col-md-4">
+                <div class="card h-100 border-0 shadow-sm">
+                    <div class="card-body text-center">
+                        <i class="fas fa-book-open fa-3x text-danger mb-3"></i>
+                        <h5>Course Details</h5>
+                        <p class="text-muted">Learn more about your selected course curriculum and structure</p>
+                        <a href="{{ url_for('home') }}" class="btn btn-outline-danger">Explore Courses</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="card h-100 border-0 shadow-sm">
+                    <div class="card-body text-center">
+                        <i class="fas fa-users fa-3x text-danger mb-3"></i>
+                        <h5>About SACDAP</h5>
+                        <p class="text-muted">Discover our mission and why thousands choose SACDAP</p>
+                        <a href="{{ url_for('contact') }}" class="btn btn-outline-danger">Learn More</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="card h-100 border-0 shadow-sm">
+                    <div class="card-body text-center">
+                        <i class="fas fa-phone-alt fa-3x text-danger mb-3"></i>
+                        <h5>Contact Support</h5>
+                        <p class="text-muted">Have questions? Our support team is here to help</p>
+                        <a href="{{ url_for('contact') }}" class="btn btn-outline-danger">Contact Us</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Social Proof -->
+<section class="py-5 bg-secondary text-white">
+    <div class="container text-center">
+        <h3 class="fw-bold mb-3">Join Our Success Community</h3>
+        <p class="lead mb-4">Connect with fellow students and alumni for networking and support</p>
+        <div class="d-flex justify-content-center gap-3">
+            <a href="#" class="btn btn-outline-light">
+                <i class="fab fa-facebook me-2"></i>Facebook
+            </a>
+            <a href="#" class="btn btn-outline-light">
+                <i class="fab fa-linkedin me-2"></i>LinkedIn
+            </a>
+            <a href="#" class="btn btn-outline-light">
+                <i class="fab fa-whatsapp me-2"></i>WhatsApp
+            </a>
+        </div>
+    </div>
+</section>
+{% endblock %}
