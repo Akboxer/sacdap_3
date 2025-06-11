@@ -9,6 +9,7 @@
   --sacdap-dark-grey: #495057;
   --sacdap-light-grey: #f8f9fa;
   --sacdap-white: #ffffff;
+  --sacdap-stock-market: #1eb900;
 
   /* Additional Colors */
   --text-dark: #212529;
@@ -402,4 +403,22 @@ button:focus {
 .card-hover:hover {
   transform: translateY(-4px) scale(1.02);
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+}
+
+/* Styles added for the stock market page  */
+
+.bg-stock-market {
+  background-color: var(--sacdap-stock-market);
+}
+
+.text-stock-market {
+  color: var(--sacdap-stock-market);
+}
+
+.btn-stock-market {
+  background-color: var(--sacdap-stock-market);
+}
+
+.btn-stock-market:hover {
+  background-color: #30c507;
 }
