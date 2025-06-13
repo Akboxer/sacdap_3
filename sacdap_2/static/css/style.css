@@ -422,3 +422,62 @@ button:focus {
 .btn-stock-market:hover {
   background-color: #30c507;
 }
+
+/* 
+
+
+
+
+
+Stock Market - Slide show styles  
+*/
+.custom-carousel-container {
+  max-width: 90%; /* You can reduce this value to scale down further */
+  aspect-ratio: 1280 / 720;
+}
+
+@media (min-width: 768px) {
+  /* Tablet and up */
+  .custom-carousel-container {
+    max-width: 80%;
+  }
+}
+
+@media (min-width: 1024px) {
+  /* Desktop and up */
+  .custom-carousel-container {
+    max-width: 60%;
+  }
+}
+
+.custom-carousel-container img {
+  object-fit: contain; /* Prevents cropping */
+  height: auto;
+  width: 100%;
+}
+
+.carousel-inner {
+  border-radius: 10px; /* Optional: for rounded corners */
+  overflow: hidden;
+}
+
+.carousel-control-prev-icon,
+.carousel-control-next-icon {
+  width: 2.5rem;
+  height: 2.5rem;
+  background-color: rgba(13, 17, 23, 0.5);
+}
+
+.carousel-indicators [data-bs-target] {
+  background-color: #b8b6b6; /* Dark dot */
+  opacity: 1; /* Fully opaque by default */
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  margin: 0 6px;
+  transition: background-color 0.3s ease;
+}
+
+.carousel-indicators .active {
+  background-color: #000; /* Even darker for active dot */
+}
