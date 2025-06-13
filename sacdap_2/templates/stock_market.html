@@ -1,170 +1,359 @@
-{% extends "base.html" %}
-
-{% block title %}{{ courses.title }} - SACDAP{% endblock %}
-
-{% block content %}
+{% extends "base.html" %} {% block title %}{{ courses.title }} - SACDAP{%
+endblock %} {% block content %}
 <!-- Page Header -->
-<section class="bg-danger text-white py-5">
-    <div class="container">
-        <div class="row align-items-center">
-            <div class="col-lg-8">
-                <h1 class="display-5 fw-bold mb-3">
-                    <i class="fas fa-chart-line me-3"></i>{{ courses.title }}
-                </h1>
-                <p class="lead">{{ courses.description }}</p>
-            </div>
-            <div class="col-lg-4 text-center">
-                <i class="fas fa-trending-up fa-4x opacity-75"></i>
-            </div>
-        </div>
+<section class="bg-stock-market text-white py-5">
+  <div class="container">
+    <div class="row align-items-center">
+      <div class="col-lg-8">
+        <h1 class="display-5 fw-bold mb-3">
+          <i class="fas fa-chart-line me-3"></i>{{ courses.title }}
+        </h1>
+        <p class="lead">{{ courses.description }}</p>
+      </div>
+      <div class="col-lg-4 text-center">
+        <i class="fas fa-trending-up fa-4x opacity-75"></i>
+        <img
+          src="{{ url_for('static', filename='images/SACDAP_Stock-Market-Logo.jpg') }}"
+          class="card-img-top"
+          style="height: 150px; object-fit: contain"
+          alt="SACDAP Trading Lab"
+        />
+      </div>
     </div>
+  </div>
+
+  <!-- Buttons : Home, Courses, Services, About -->
+
+  <div
+    class="d-flex justify-content-center flex-column flex-md-row align-items-center"
+  >
+    <a href="{{ url_for('home') }}" class="btn btn-danger btn-lg mx-5 mt-5">
+      Home
+    </a>
+    <!--  Dropdown : Stock Market Courses -->
+    <div class="dropdown mx-5 mt-5">
+      <a
+        class="btn btn-danger btn-lg dropdown-toggle"
+        href="#"
+        role="button"
+        id="coursesDropdown"
+        data-bs-toggle="dropdown"
+        aria-expanded="false"
+      >
+        Courses
+      </a>
+
+      <ul
+        class="dropdown-menu dropdown-menu-light"
+        aria-labelledby="coursesDropdown"
+      >
+        {% for course in courses.courses %}
+        <li>
+          <a class="dropdown-item" href="#{{course.id}}">{{course.name}}</a>
+        </li>
+
+        {% endfor %}
+      </ul>
+    </div>
+
+    <!-- Dropdown : Stock Market Services  -->
+
+    <div class="dropdown mx-5 mt-5">
+      <a
+        class="btn btn-danger btn-lg dropdown-toggle"
+        href="#"
+        role="button"
+        id="servicesDropdown"
+        data-bs-toggle="dropdown"
+        aria-expanded="false"
+      >
+        Services
+      </a>
+      <ul
+        class="dropdown-menu dropdown-menu-light"
+        aria-labelledby="servicesDropdown"
+      >
+        <li><a class="dropdown-item" href="#">IPO Advisory</a></li>
+        <li><a class="dropdown-item" href="#">Mutual Funds</a></li>
+        <li><a class="dropdown-item" href="#">MTF</a></li>
+        <li><a class="dropdown-item" href="#">Research Call</a></li>
+        <li><a class="dropdown-item" href="#">WealthCreation</a></li>
+        <li><a class="dropdown-item" href="#">PMS</a></li>
+        <li><a class="dropdown-item" href="#">Algo Service</a></li>
+        <li><a class="dropdown-item" href="#">Assist in trading</a></li>
+      </ul>
+    </div>
+
+    <!-- About Button -->
+    <a href="" class="btn btn-danger btn-lg mx-5 mt-5"> About </a>
+  </div>
+</section>
+
+<!-- Slide show section -->
+<section>
+  <div class="custom-carousel-container mx-auto my-4">
+    <div
+      id="stockMarketCarousel"
+      class="carousel slide carousel-fade"
+      data-bs-ride="carousel"
+    >
+      <div class="carousel-indicators">
+        <button
+          type="button"
+          data-bs-target="#stockMarketCarousel"
+          data-bs-slide-to="0"
+          class="active"
+          aria-current="true"
+          aria-label="Slide 1"
+        ></button>
+        <button
+          type="button"
+          data-bs-target="#stockMarketCarousel"
+          data-bs-slide-to="1"
+          aria-label="Slide 2"
+        ></button>
+        <button
+          type="button"
+          data-bs-target="#stockMarketCarousel"
+          data-bs-slide-to="2"
+          aria-label="Slide 3"
+        ></button>
+      </div>
+
+      <div class="carousel-inner">
+        <div class="carousel-item active" data-bs-interval="2000">
+          <img
+            src="{{ url_for('static', filename='images/stock-market-slideshow/slide-1.jpg') }}"
+            class="d-block w-100"
+            alt="Slide 1"
+          />
+        </div>
+
+        <div class="carousel-item" data-bs-interval="3000">
+          <img
+            src="{{ url_for('static', filename='images/stock-market-slideshow/slide-2.jpg') }}"
+            class="d-block w-100"
+            alt="Slide 2"
+          />
+        </div>
+
+        <div class="carousel-item" data-bs-interval="5000">
+          <img
+            src="{{ url_for('static', filename='images/stock-market-slideshow/slide-3.jpg') }}"
+            class="d-block w-100"
+            alt="Slide 3"
+          />
+        </div>
+      </div>
+
+      <!-- Controls -->
+      <button
+        class="carousel-control-prev"
+        type="button"
+        data-bs-target="#stockMarketCarousel"
+        data-bs-slide="prev"
+      >
+        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Previous</span>
+      </button>
+
+      <button
+        class="carousel-control-next"
+        type="button"
+        data-bs-target="#stockMarketCarousel"
+        data-bs-slide="next"
+      >
+        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Next</span>
+      </button>
+    </div>
+  </div>
 </section>
 
 <!-- Training Environment -->
 <section class="py-5 bg-light">
-    <div class="container">
-        <div class="text-center mb-5">
-            <h2 class="display-6 fw-bold text-dark">Professional Trading Environment</h2>
-            <p class="lead text-muted">Learn market analysis and trading in our well-equipped training facilities</p>
-        </div>
-        
-        <div class="row g-4 mb-5">
-            <div class="col-md-6">
-                <div class="card shadow-sm border-0">
-                    <img src="{{ url_for('static', filename='images/classroom1.jpg') }}" class="card-img-top" style="height: 250px; object-fit: cover;" alt="SACDAP Trading Lab">
-                    <div class="card-body">
-                        <h5 class="card-title text-danger">Live Trading Lab</h5>
-                        <p class="card-text">Experience real-time market data and trading platforms with individual computer workstations.</p>
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-6">
-                <div class="card shadow-sm border-0">
-                    <img src="{{ url_for('static', filename='images/office1.jpg') }}" class="card-img-top" style="height: 250px; object-fit: cover;" alt="SACDAP Consultation Area">
-                    <div class="card-body">
-                        <h5 class="card-title text-danger">Expert Consultation</h5>
-                        <p class="card-text">Get personalized guidance from market experts and experienced traders in our consultation area.</p>
-                    </div>
-                </div>
-            </div>
-        </div>
+  <div class="container">
+    <div class="text-center mb-5">
+      <h2 class="display-6 fw-bold text-dark">
+        Professional Trading Environment
+      </h2>
+      <p class="lead text-muted">
+        Learn market analysis and trading in our well-equipped training
+        facilities
+      </p>
     </div>
+
+    <div class="row g-4 mb-5">
+      <div class="col-md-6">
+        <div class="card shadow-sm border-0">
+          <img
+            src="{{ url_for('static', filename='images/trading_classes.jpg') }}"
+            class="card-img-top"
+            style="height: 250px; object-fit: cover"
+            alt="SACDAP Trading Lab"
+          />
+          <div class="card-body">
+            <h5 class="card-title text-stock-market">Live Trading Lab</h5>
+            <p class="card-text">
+              Experience real-time market data and trading platforms with
+              individual computer workstations.
+            </p>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-6">
+        <div class="card shadow-sm border-0">
+          <img
+            src="{{ url_for('static', filename='images/office1.jpg') }}"
+            class="card-img-top"
+            style="height: 250px; object-fit: cover"
+            alt="SACDAP Consultation Area"
+          />
+          <div class="card-body">
+            <h5 class="card-title text-stock-market">Expert Consultation</h5>
+            <p class="card-text">
+              Get personalized guidance from market experts and experienced
+              traders in our consultation area.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
 </section>
 
 <!-- Courses List -->
 <section class="py-5">
-    <div class="container">
-        <div class="text-center mb-5">
-            <h2 class="display-6 fw-bold text-dark">Stock Market Courses</h2>
-            <p class="lead text-muted">Master trading and investment with our comprehensive programs</p>
-        </div>
-        <div class="row g-4">
-            {% for course in courses.courses %}
-            <div class="col-lg-6">
-                <div class="card h-100 shadow-sm course-detail-card">
-                    <div class="card-header bg-light">
-                        <div class="d-flex justify-content-between align-items-center">
-                            <h5 class="mb-0 text-danger">{{ course.name }}</h5>
-                            <span class="badge bg-secondary">{{ course.duration }}</span>
-                        </div>
-                    </div>
-                    <div class="card-body">
-                        <p class="card-text">{{ course.description }}</p>
-                        
-                        <!-- Course Features -->
-                        <div class="mt-3">
-                            <h6 class="fw-bold text-dark">Course Highlights:</h6>
-                            <ul class="list-unstyled">
-                                {% if course.id == 'stock_market_basics' %}
-                                <li><i class="fas fa-check text-success me-2"></i>Stock market fundamentals</li>
-                                <li><i class="fas fa-check text-success me-2"></i>Trading platforms & tools</li>
-                                <li><i class="fas fa-check text-success me-2"></i>Risk management basics</li>
-                                <li><i class="fas fa-check text-success me-2"></i>Market regulations</li>
-                                {% elif course.id == 'technical_analysis' %}
-                                <li><i class="fas fa-check text-success me-2"></i>Chart pattern recognition</li>
-                                <li><i class="fas fa-check text-success me-2"></i>Technical indicators</li>
-                                <li><i class="fas fa-check text-success me-2"></i>Support & resistance levels</li>
-                                <li><i class="fas fa-check text-success me-2"></i>Trading strategies</li>
-                                {% elif course.id == 'fundamental_analysis' %}
-                                <li><i class="fas fa-check text-success me-2"></i>Financial statement analysis</li>
-                                <li><i class="fas fa-check text-success me-2"></i>Company valuation methods</li>
-                                <li><i class="fas fa-check text-success me-2"></i>Economic indicators</li>
-                                <li><i class="fas fa-check text-success me-2"></i>Sector analysis</li>
-                                {% elif course.id == 'trading_strategies' %}
-                                <li><i class="fas fa-check text-success me-2"></i>Advanced trading techniques</li>
-                                <li><i class="fas fa-check text-success me-2"></i>Portfolio management</li>
-                                <li><i class="fas fa-check text-success me-2"></i>Risk assessment</li>
-                                <li><i class="fas fa-check text-success me-2"></i>Real-time trading practice</li>
-                                {% endif %}
-                            </ul>
-                        </div>
-                    </div>
-                    <div class="card-footer bg-light">
-                        <div class="d-flex gap-2 mb-2">
-                            <button class="btn btn-outline-secondary btn-sm flex-fill" disabled>
-                                <i class="fas fa-file-pdf me-1"></i>Course PDF
-                                <small class="d-block text-muted">Coming Soon</small>
-                            </button>
-                        </div>
-                        <a href="{{ url_for('enroll', course=course.id) }}" class="btn btn-danger w-100">
-                            <i class="fas fa-user-plus me-2"></i>Enroll in {{ course.name }}
-                        </a>
-                    </div>
-                </div>
-            </div>
-            {% endfor %}
-        </div>
+  <div class="container">
+    <div class="text-center mb-5">
+      <h2 class="display-6 fw-bold text-dark">Stock Market Courses</h2>
+      <p class="lead text-muted">
+        Master trading and investment with our comprehensive programs
+      </p>
     </div>
+    <div class="row g-4">
+      {% for course in courses.courses %}
+      <div class="col-lg-6">
+        <div class="card h-100 shadow-sm course-detail-card">
+          <div class="card-header bg-light">
+            <div class="d-flex justify-content-between align-items-center">
+              <h5 id="{{course.id}}" class="mb-0 text-stock-market">
+                {{ course.name }}
+              </h5>
+              <span class="badge bg-secondary">{{ course.duration }}</span>
+            </div>
+          </div>
+          <div class="card-body">
+            <p class="card-text">{{ course.description }}</p>
+
+            <!-- Course Features -->
+            <div class="mt-3">
+              <h6 class="fw-bold text-dark">Course Highlights:</h6>
+              <ul class="list-unstyled">
+                {% if course.highlights %} {# Optional: Check if highlights
+                exist #} {% for highlight in course.highlights %}
+                <li>
+                  <i class="fas fa-check text-success me-2"></i>{{ highlight }}
+                </li>
+                {% endfor %} {% else %} {# Optional: Add a message if no
+                highlights are available #}
+                <li>No specific highlights available for this course.</li>
+                {% endif %}
+              </ul>
+            </div>
+          </div>
+          <div class="card-footer bg-light">
+            <div class="d-flex gap-2 mb-2">
+              <button
+                class="btn btn-outline-secondary btn-sm flex-fill"
+                disabled
+              >
+                <i class="fas fa-file-pdf me-1"></i>Course PDF
+                <small class="d-block text-muted">Coming Soon</small>
+              </button>
+            </div>
+            <a
+              href="{{ url_for('enroll', course=course.id) }}"
+              class="btn btn-stock-market w-100"
+            >
+              <i class="fas fa-user-plus me-2"></i>Enroll in {{ course.name }}
+            </a>
+          </div>
+        </div>
+      </div>
+      {% endfor %}
+    </div>
+  </div>
 </section>
 
 <!-- Market Insights Section -->
 <section class="bg-light py-5">
-    <div class="container">
-        <div class="text-center mb-5">
-            <h2 class="display-6 fw-bold text-dark">Career Opportunities in Stock Market</h2>
-            <p class="lead text-muted">Explore the diverse career paths available in financial markets</p>
-        </div>
-        
-        <div class="row g-4">
-            <div class="col-md-4">
-                <div class="text-center">
-                    <div class="bg-white rounded-circle p-4 d-inline-block shadow-sm mb-3">
-                        <i class="fas fa-user-tie fa-2x text-danger"></i>
-                    </div>
-                    <h5>Financial Advisor</h5>
-                    <p class="text-muted">Guide clients in investment decisions and portfolio management</p>
-                </div>
-            </div>
-            <div class="col-md-4">
-                <div class="text-center">
-                    <div class="bg-white rounded-circle p-4 d-inline-block shadow-sm mb-3">
-                        <i class="fas fa-chart-bar fa-2x text-danger"></i>
-                    </div>
-                    <h5>Market Analyst</h5>
-                    <p class="text-muted">Analyze market trends and provide investment recommendations</p>
-                </div>
-            </div>
-            <div class="col-md-4">
-                <div class="text-center">
-                    <div class="bg-white rounded-circle p-4 d-inline-block shadow-sm mb-3">
-                        <i class="fas fa-laptop fa-2x text-danger"></i>
-                    </div>
-                    <h5>Day Trader</h5>
-                    <p class="text-muted">Execute short-term trades for profit in volatile markets</p>
-                </div>
-            </div>
-        </div>
+  <div class="container">
+    <div class="text-center mb-5">
+      <h2 class="display-6 fw-bold text-dark">
+        Career Opportunities in Stock Market
+      </h2>
+      <p class="lead text-muted">
+        Explore the diverse career paths available in financial markets
+      </p>
     </div>
+
+    <div class="row g-4">
+      <div class="col-md-4">
+        <div class="text-center">
+          <div
+            class="bg-white rounded-circle p-4 d-inline-block shadow-sm mb-3"
+          >
+            <i class="fas fa-user-tie fa-2x text-stock-market"></i>
+          </div>
+          <h5>Financial Advisor</h5>
+          <p class="text-muted">
+            Guide clients in investment decisions and portfolio management
+          </p>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="text-center">
+          <div
+            class="bg-white rounded-circle p-4 d-inline-block shadow-sm mb-3"
+          >
+            <i class="fas fa-chart-bar fa-2x text-stock-market"></i>
+          </div>
+          <h5>Market Analyst</h5>
+          <p class="text-muted">
+            Analyze market trends and provide investment recommendations
+          </p>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="text-center">
+          <div
+            class="bg-white rounded-circle p-4 d-inline-block shadow-sm mb-3"
+          >
+            <i class="fas fa-laptop fa-2x text-stock-market"></i>
+          </div>
+          <h5>Day Trader</h5>
+          <p class="text-muted">
+            Execute short-term trades for profit in volatile markets
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
 </section>
 
 <!-- CTA Section -->
 <section class="py-5 bg-secondary text-white">
-    <div class="container text-center">
-        <h2 class="display-6 fw-bold mb-3">Start Your Stock Market Journey Today</h2>
-        <p class="lead mb-4">Master the art of trading and investment with expert guidance</p>
-        <a href="{{ url_for('enroll') }}" class="btn btn-danger btn-lg">
-            <i class="fas fa-chart-line me-2"></i>Begin Your Training
-        </a>
-    </div>
+  <div class="container text-center">
+    <h2 class="display-6 fw-bold mb-3">
+      Start Your Stock Market Journey Today
+    </h2>
+    <p class="lead mb-4">
+      Master the art of trading and investment with expert guidance
+    </p>
+    <a href="{{ url_for('enroll') }}" class="btn btn-stock-market btn-lg">
+      <i class="fas fa-chart-line me-2"></i>Begin Your Training
+    </a>
+  </div>
 </section>
 {% endblock %}
