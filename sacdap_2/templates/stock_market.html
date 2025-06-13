@@ -24,7 +24,9 @@ endblock %} {% block content %}
 
   <!-- Buttons : Home, Courses, Services, About -->
 
-  <div class="d-flex justify-content-center flex-wrap">
+  <div
+    class="d-flex justify-content-center flex-column flex-md-row align-items-center"
+  >
     <a href="{{ url_for('home') }}" class="btn btn-danger btn-lg mx-5 mt-5">
       Home
     </a>
@@ -50,29 +52,6 @@ endblock %} {% block content %}
           <a class="dropdown-item" href="#{{course.id}}">{{course.name}}</a>
         </li>
 
-        <!-- <li>
-          <a class="dropdown-item" href="#stock_market_basics"
-            >Stock Market Basics</a
-          >
-        </li>
-        <li><hr class="dropdown-divider" /></li>
-        <li>
-          <a class="dropdown-item" href="#technical_analysis"
-            >Technical Analysis</a
-          >
-        </li>
-        <li><hr class="dropdown-divider" /></li>
-        <li>
-          <a class="dropdown-item" href="#fundamental_analysis"
-            >Fundamental Analysis</a
-          >
-        </li>
-        <li><hr class="dropdown-divider" /></li>
-        <li>
-          <a class="dropdown-item" href="#trading_strategies"
-            >Trading Strategies</a
-          >
-        </li> -->
         {% endfor %}
       </ul>
     </div>
@@ -110,6 +89,87 @@ endblock %} {% block content %}
   </div>
 </section>
 
+<!-- Slide show section -->
+<section>
+  <div class="custom-carousel-container mx-auto my-4">
+    <div
+      id="stockMarketCarousel"
+      class="carousel slide carousel-fade"
+      data-bs-ride="carousel"
+    >
+      <div class="carousel-indicators">
+        <button
+          type="button"
+          data-bs-target="#stockMarketCarousel"
+          data-bs-slide-to="0"
+          class="active"
+          aria-current="true"
+          aria-label="Slide 1"
+        ></button>
+        <button
+          type="button"
+          data-bs-target="#stockMarketCarousel"
+          data-bs-slide-to="1"
+          aria-label="Slide 2"
+        ></button>
+        <button
+          type="button"
+          data-bs-target="#stockMarketCarousel"
+          data-bs-slide-to="2"
+          aria-label="Slide 3"
+        ></button>
+      </div>
+
+      <div class="carousel-inner">
+        <div class="carousel-item active" data-bs-interval="2000">
+          <img
+            src="{{ url_for('static', filename='images/stock-market-slideshow/slide-1.jpg') }}"
+            class="d-block w-100"
+            alt="Slide 1"
+          />
+        </div>
+
+        <div class="carousel-item" data-bs-interval="3000">
+          <img
+            src="{{ url_for('static', filename='images/stock-market-slideshow/slide-2.jpg') }}"
+            class="d-block w-100"
+            alt="Slide 2"
+          />
+        </div>
+
+        <div class="carousel-item" data-bs-interval="5000">
+          <img
+            src="{{ url_for('static', filename='images/stock-market-slideshow/slide-3.jpg') }}"
+            class="d-block w-100"
+            alt="Slide 3"
+          />
+        </div>
+      </div>
+
+      <!-- Controls -->
+      <button
+        class="carousel-control-prev"
+        type="button"
+        data-bs-target="#stockMarketCarousel"
+        data-bs-slide="prev"
+      >
+        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Previous</span>
+      </button>
+
+      <button
+        class="carousel-control-next"
+        type="button"
+        data-bs-target="#stockMarketCarousel"
+        data-bs-slide="next"
+      >
+        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Next</span>
+      </button>
+    </div>
+  </div>
+</section>
+
 <!-- Training Environment -->
 <section class="py-5 bg-light">
   <div class="container">
@@ -127,7 +187,7 @@ endblock %} {% block content %}
       <div class="col-md-6">
         <div class="card shadow-sm border-0">
           <img
-            src="{{ url_for('static', filename='images/classroom1.jpg') }}"
+            src="{{ url_for('static', filename='images/trading_classes.jpg') }}"
             class="card-img-top"
             style="height: 250px; object-fit: cover"
             alt="SACDAP Trading Lab"
